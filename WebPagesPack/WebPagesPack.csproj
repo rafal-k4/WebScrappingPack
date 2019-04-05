@@ -11,8 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\KwejkParser\KwejkParser.csproj" />
   </ItemGroup>
 
 </Project>
