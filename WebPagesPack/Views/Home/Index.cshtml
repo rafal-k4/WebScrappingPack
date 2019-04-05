@@ -1,0 +1,9 @@
+﻿@model IndexViewModel
+
+@foreach(var item in Model.KwejkViewModel)
+{
+    <div>
+        <h3>@item.Title</h3>
+        <img src="@item.ImageUrl"/>
+    </div>
+}

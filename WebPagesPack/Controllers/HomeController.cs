@@ -21,7 +21,7 @@ namespace WebPagesPack.Controllers
             var model = homeLogic.GetKwejkViewModel();
             
 
-            return View();
+            return View(model);
         }
     }
 }
