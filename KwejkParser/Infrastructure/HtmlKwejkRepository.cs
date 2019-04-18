@@ -24,6 +24,14 @@ namespace KwejkParser.Infrastructure
             return nodes;
         }
 
+        public IEnumerable<HtmlNode> GetPageNodes(int id)
+        {
+            var doc = PrepareHtmlDocument(string.Concat(url,"/strona/", id));
+
+            var nodes = doc.DocumentNode.SelectNodes("//div").Where(x => x.Attributes["class"]?.Value.Contains("box fav") ?? false);
+
+            return nodes;
+        }
 
         private HtmlDocument PrepareHtmlDocument(string url)
         {

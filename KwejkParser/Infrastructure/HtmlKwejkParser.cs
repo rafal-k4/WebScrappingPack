@@ -43,5 +43,23 @@ namespace KwejkParser.Infrastructure
             int.TryParse(resultNumberAsText, out resultNumber);
             return resultNumber;
         }
+
+        public IEnumerable<KwejkModel> GetKwejkObjects(int id)
+        {
+            var nodes = KwejkRepository.GetPageNodes(id);
+
+            foreach (var node in nodes)
+            {
+
+                var title = node.Descendants("h2").
+                        Select(x => x.Descendants("a").Where(y => y.Attributes["dusk"]?.Value == "media-title-selector").
+                        FirstOrDefault()?.InnerText).FirstOrDefault();
+
+                var url = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "full-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
+
+
+                yield return new KwejkModel() { ImageUrl = url?.Trim(), Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
+            }
+        }
     }
 }

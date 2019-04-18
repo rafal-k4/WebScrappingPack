@@ -16,7 +16,8 @@ namespace WebPagesPack.Controllers
 
         public ViewResult Index(int id)
         {
-            var model = homeLogic.GetKwejkViewModel();
+
+            var model = id == 0 ? homeLogic.GetKwejkViewModel() : homeLogic.GetKwejkViewModel(id);
             model.FirstPageNumber = FirstPageNumber;
 
             return View(model);
