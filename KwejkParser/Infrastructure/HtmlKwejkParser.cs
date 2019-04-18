@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using KwejkParser.Models;
-using KwejkParser.Interface;
+using Models;
 using HtmlAgilityPack;
 
 
@@ -10,7 +9,7 @@ namespace KwejkParser.Infrastructure
 {
     public class HtmlKwejkParser
     {
-       public IEnumerable<IKwejkModel> GetKwejkObjects()
+       public IEnumerable<KwejkModel> GetKwejkObjects()
         {
             IEnumerable<HtmlNode> nodes = new HtmlKwejkRepository().GetPageNodes();
 
