@@ -1,12 +1,13 @@
 ﻿using HtmlAgilityPack;
 using System.Collections.Generic;
 using System.Linq;
+using KwejkParser.Interfaces;
 
 namespace KwejkParser.Infrastructure
 {
-    public class HtmlKwejkRepository
+    public class HtmlKwejkRepository: IHtmlKwejkRepository
     {
-        internal IEnumerable<HtmlNode> GetPageNodes()
+        public IEnumerable<HtmlNode> GetPageNodes()
         {
             var url = "https://kwejk.pl/";
             var web = new HtmlWeb();

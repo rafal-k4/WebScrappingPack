@@ -2,16 +2,22 @@
 using System.Linq;
 using Models;
 using HtmlAgilityPack;
-
+using KwejkParser.Interfaces;
 
 
 namespace KwejkParser.Infrastructure
 {
-    public class HtmlKwejkParser: IKwejkRepository
+    public class HtmlKwejkParser: IHtmlKwejkParser
     {
-       public IEnumerable<KwejkModel> GetKwejkObjects()
+        public IHtmlKwejkRepository KwejkRepository { get; set; }
+
+        public HtmlKwejkParser(IHtmlKwejkRepository kwejkRepo)
         {
-            IEnumerable<HtmlNode> nodes = new HtmlKwejkRepository().GetPageNodes();
+            KwejkRepository = kwejkRepo;
+        }
+        public IEnumerable<KwejkModel> GetKwejkObjects()
+        {
+            IEnumerable<HtmlNode> nodes = KwejkRepository.GetPageNodes();
 
             foreach(var node in nodes)
             {

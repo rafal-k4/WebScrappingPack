@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using WebPagesPack.Controllers.ControllersLogic;
+using KwejkParser.Interfaces;
+using KwejkParser.Infrastructure;
 
 namespace WebPagesPack
 {
@@ -14,6 +16,8 @@ namespace WebPagesPack
             services.AddMvc();
 
             services.AddScoped<IHomeLogic, HomeLogic>();
+            services.AddScoped<IHtmlKwejkParser, HtmlKwejkParser>();
+            services.AddScoped<IHtmlKwejkRepository, HtmlKwejkRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
