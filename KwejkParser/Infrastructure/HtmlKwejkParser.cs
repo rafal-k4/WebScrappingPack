@@ -7,7 +7,7 @@ using HtmlAgilityPack;
 
 namespace KwejkParser.Infrastructure
 {
-    public class HtmlKwejkParser
+    public class HtmlKwejkParser: IKwejkRepository
     {
        public IEnumerable<KwejkModel> GetKwejkObjects()
         {
