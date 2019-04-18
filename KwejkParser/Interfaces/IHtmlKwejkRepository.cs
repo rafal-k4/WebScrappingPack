@@ -7,5 +7,6 @@ namespace KwejkParser.Interfaces
     public interface IHtmlKwejkRepository
     {
         IEnumerable<HtmlNode> GetPageNodes();
+        IEnumerable<HtmlNode> GetNodeWithFirstPageNumber();
     }
 }

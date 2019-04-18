@@ -33,5 +33,15 @@ namespace KwejkParser.Infrastructure
             }
 
         }
+
+        public int GetFirstPageNumber()
+        {
+            var nodes = KwejkRepository.GetNodeWithFirstPageNumber();
+            var resultNumberAsText = nodes.Where(x => x.Attributes["class"]?.Value == "current").FirstOrDefault()?.InnerText.Trim();
+
+            int resultNumber;
+            int.TryParse(resultNumberAsText, out resultNumber);
+            return resultNumber;
+        }
     }
 }

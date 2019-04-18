@@ -7,5 +7,7 @@ namespace WebPagesPack.Models
     public class IndexViewModel
     {
         public IEnumerable<KwejkModel> KwejkViewModel { get; set; }
+
+        public int FirstPageNumber { get; set; }
     }
 }

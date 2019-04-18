@@ -12,5 +12,10 @@ namespace WebPagesPack.Controllers.ControllersLogic
             KwejkParser = kwejkParser;
         }
         public IndexViewModel GetKwejkViewModel() => new IndexViewModel() { KwejkViewModel = KwejkParser.GetKwejkObjects().ToList() };
+
+        public int GetFirstPageNumber()
+        {
+            return KwejkParser.GetFirstPageNumber();
+        }
     }
 }

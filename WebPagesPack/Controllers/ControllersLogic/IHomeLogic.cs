@@ -5,5 +5,6 @@ namespace WebPagesPack.Controllers.ControllersLogic
     public interface IHomeLogic
     {
         IndexViewModel GetKwejkViewModel();
+        int GetFirstPageNumber();
     }
 }
