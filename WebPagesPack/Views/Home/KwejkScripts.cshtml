@@ -9,12 +9,11 @@
     })
 
     $(window).scroll(function () {
-        
-        if ($(document).scrollTop() > $(document).height() * 0.6 && documentHeight !== $(document).height()) {
+        if ($(document).scrollTop() > $(document).height() - 3000 && documentHeight !== $(document).height()) {
             $.get("/Home/GetPage/" + currentPage--, function (data) {
-                    $(document.body).append(data)
+                $(document.body).append(data)
             });
-        
+            
             documentHeight = $(document).height();
         }
     });
