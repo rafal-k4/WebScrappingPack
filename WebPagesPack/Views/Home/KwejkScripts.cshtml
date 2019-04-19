@@ -1,0 +1,22 @@
+﻿@model WebPagesPack.Models.IndexViewModel
+<script>
+    let currentPage;
+    let Url;
+    let documentHeight = 0;
+
+    $(document).ready(function () {
+        currentPage = @Model.CurrentPageNumber;
+    })
+
+    $(window).scroll(function () {
+        
+        if ($(document).scrollTop() > $(document).height() * 0.6 && documentHeight !== $(document).height()) {
+            $.get("/Home/GetPage/" + currentPage--, function (data) {
+                    $(document.body).append(data)
+            });
+        
+            documentHeight = $(document).height();
+        }
+    });
+
+</script>

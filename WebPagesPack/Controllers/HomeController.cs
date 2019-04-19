@@ -14,13 +14,20 @@ namespace WebPagesPack.Controllers
             FirstPageNumber = homeLogic.GetFirstPageNumber();
         }
 
-        public ViewResult Index(int id)
+        public ViewResult Index(int? id)
         {
 
-            var model = id == 0 ? homeLogic.GetKwejkViewModel() : homeLogic.GetKwejkViewModel(id);
-            model.FirstPageNumber = FirstPageNumber;
+            var model = id == null ? homeLogic.GetKwejkViewModel() : homeLogic.GetKwejkViewModel((int)id);
+            model.CurrentPageNumber = id == null ? FirstPageNumber : (int)id;
 
             return View(model);
+        }
+
+        public ActionResult GetPage(int id)
+        {
+            var model = homeLogic.GetKwejkViewModel(id);
+
+            return PartialView("Index", model);
         }
     }
 }

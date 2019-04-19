@@ -8,6 +8,6 @@ namespace WebPagesPack.Models
     {
         public IEnumerable<KwejkModel> KwejkViewModel { get; set; }
 
-        public int FirstPageNumber { get; set; }
+        public int CurrentPageNumber { get; set; }
     }
 }
