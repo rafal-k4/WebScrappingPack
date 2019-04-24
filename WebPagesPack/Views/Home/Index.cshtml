@@ -1,13 +1,35 @@
 ﻿@model IndexViewModel
 
-   
+
+@*<video controls autoplay="" muted="muted" loop="" src="https://i1.kwejk.pl/k/obrazki/2019/04/PzKDactyafBRHTRR.mp4"></video>
+
+<video class="text-center" width="320" height="240" controls>
+    <source src="https://i1.kwejk.pl/k/obrazki/2019/04/PzKDactyafBRHTRR.mp4" type="video/mp4">
+
+    Your browser does not support the video tag.
+</video>*@
+
 <div class="col-12 text-center">
     @foreach (var item in Model.KwejkViewModel)
     {
-        <div class="bottom-top-padding">
-            <h3 class="text-white">@item.Title</h3>
-            <img src="@item.ImageUrl" class="border border-larger" />
-        </div>
+        if (item.ImageUrl != null)
+        {
+            <div class="bottom-top-padding">
+                <h3 class="text-white">@item.Title</h3>
+                <img src="@item.ImageUrl" class="border border-larger" />
+            </div>
+        }
+        if (item.VideoUrl != null)
+        {
+            <div class="bottom-top-padding">
+                <h3 class="text-white">@item.Title</h3>
+                <video class="text-center border border-larger" width="320" height="240" controls>
+                    <source src="@item.VideoUrl" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        }
+
     }
 </div>
 
