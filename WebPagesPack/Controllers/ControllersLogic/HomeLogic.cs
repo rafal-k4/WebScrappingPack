@@ -1,14 +1,24 @@
-﻿using KwejkParser.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using WebPagesPack.Models;
+using KwejkParser.Interfaces;
 
 namespace WebPagesPack.Controllers.ControllersLogic
 {
     public class HomeLogic : IHomeLogic
     {
-        public IndexViewModel GetKwejkViewModel() => new IndexViewModel() { KwejkViewModel = new HtmlKwejkParser().GetKwejkObjects().ToList() };
+        private IHtmlKwejkParser KwejkParser { get; set; }
+        public HomeLogic(IHtmlKwejkParser kwejkParser)
+        {
+            KwejkParser = kwejkParser;
+        }
+        public IndexViewModel GetKwejkViewModel() => new IndexViewModel() { KwejkViewModel = KwejkParser.GetKwejkObjects().ToList() };
+
+        public int GetFirstPageNumber()
+        {
+            return KwejkParser.GetFirstPageNumber();
+        }
+
+        public IndexViewModel GetKwejkViewModel(int id) => new IndexViewModel() { KwejkViewModel = KwejkParser.GetKwejkObjects(id).ToList() };
+        
     }
 }

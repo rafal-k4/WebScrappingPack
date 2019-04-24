@@ -6,3 +6,9 @@
     padding:10px 0 50px 0;
 }
 
+img.shrinkedImage{
+    transform: scale(0.4);
+}
+
+
+
