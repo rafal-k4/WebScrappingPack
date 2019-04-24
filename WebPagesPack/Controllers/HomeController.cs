@@ -6,9 +6,9 @@ namespace WebPagesPack.Controllers
     public class HomeController:Controller
     {
 
-        public string Index(int? id)
+        public ViewResult Index(int? id)
         {
-            return "coś tam";
+            return View();
         }
     }
 }
