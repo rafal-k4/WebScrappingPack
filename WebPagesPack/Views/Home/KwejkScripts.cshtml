@@ -11,10 +11,10 @@
     $(window).scroll(function () {
         if ($(document).scrollTop() > $(document).height() - 3000 && documentHeight !== $(document).height()) {
 
-            $(document.body).append('<img id="loading-gif" src="/wwwroot/Images/loading.gif"></img>')
-            $.get("/Home/GetPage/" + currentPage--, function (data) {
-                //$("#loading-gif").remove();
-                $(document.body).append(data);
+            currentPage--
+            $.get("/Home/GetPage/" + currentPage, function (data) {
+                $("div#loading").remove();
+                $("div.PageContent").append(data);
             });
             
             documentHeight = $(document).height();

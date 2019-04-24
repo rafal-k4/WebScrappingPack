@@ -1,7 +1,6 @@
 ﻿@model IndexViewModel
 
-
-
+   
 <div class="col-12 text-center">
     @foreach (var item in Model.KwejkViewModel)
     {
@@ -12,8 +11,11 @@
     }
 </div>
 
+<div class="col-12 text-center" id="loading">
+    <img class="shrinkedImage" id="loading-gif" src="~/Images/loading.gif">
+</div>
+
 @section scripts
 {
     @Html.RenderPartialAsync("KwejkScripts", Model)
-    @*@{ Html.RenderPartial("KwejkScripts", Model); }*@
 }
