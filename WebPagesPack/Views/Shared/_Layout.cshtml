@@ -10,7 +10,7 @@
     
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/twitter-bootstrap/js/bootstrap.min.js"></script>
-    <title>Memsy</title>
+    <title>@ViewData["Title"]</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
         @RenderBody()
     </div>
 
-    @RenderSection("scripts")
+    @RenderSection("scripts", false)
     
 </body>
 </html>

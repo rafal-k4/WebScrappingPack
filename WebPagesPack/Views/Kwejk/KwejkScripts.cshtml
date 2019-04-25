@@ -12,7 +12,7 @@
         if ($(document).scrollTop() > $(document).height() - 3000 && documentHeight !== $(document).height()) {
 
             currentPage--
-            $.get("/Home/GetPage/" + currentPage, function (data) {
+            $.get("/Kwejk/GetPage/" + currentPage, function (data) {
                 $("div#loading").remove();
                 $("div.PageContent").append(data);
             });
