@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebPagesPackTests", "WebPag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KwejkParser", "KwejkParser\KwejkParser.csproj", "{15A3B36A-766B-4F6E-973B-F7DEB00F9F0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{0419A463-4454-4A84-AF01-2B7BFE5A64FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{0419A463-4454-4A84-AF01-2B7BFE5A64FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JbzdzParser", "JbzdzParser\JbzdzParser.csproj", "{2DFD8FA8-FC90-43B2-8690-31788FC6E2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HtmlParser", "HtmlParser\HtmlParser.csproj", "{6D3D03BF-D738-4182-8720-AAD82572D042}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0419A463-4454-4A84-AF01-2B7BFE5A64FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0419A463-4454-4A84-AF01-2B7BFE5A64FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0419A463-4454-4A84-AF01-2B7BFE5A64FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DFD8FA8-FC90-43B2-8690-31788FC6E2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DFD8FA8-FC90-43B2-8690-31788FC6E2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DFD8FA8-FC90-43B2-8690-31788FC6E2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DFD8FA8-FC90-43B2-8690-31788FC6E2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D3D03BF-D738-4182-8720-AAD82572D042}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D3D03BF-D738-4182-8720-AAD82572D042}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D3D03BF-D738-4182-8720-AAD82572D042}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D3D03BF-D738-4182-8720-AAD82572D042}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

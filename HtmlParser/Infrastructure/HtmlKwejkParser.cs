@@ -1,29 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Models;
 using HtmlAgilityPack;
-using KwejkParser.Interfaces;
+using HtmlParser.Interfaces;
+using Models;
 
 namespace KwejkParser.Infrastructure
 {
-    public class HtmlKwejkParser : IHtmlKwejkParser
+    public class KwejkRepository : IRepository
     {
-        public IHtmlKwejkRepository KwejkRepository { get; set; }
+        public IHtmlParser KwejkParser { get; set; }
 
-        public HtmlKwejkParser(IHtmlKwejkRepository kwejkRepo)
+        public KwejkRepository(IHtmlParser kwejkRepo)
         {
-            KwejkRepository = kwejkRepo;
+            KwejkParser = kwejkRepo;
         }
-        public IEnumerable<KwejkModel> GetKwejkObjects()
+        public IEnumerable<KwejkModel> GetObjects()
         {
-            IEnumerable<HtmlNode> nodes = KwejkRepository.GetPageNodes();
+            IEnumerable<HtmlNode> nodes = KwejkParser.GetPageNodes();
 
             return GetParsedKwejkObjects(nodes);
         }
 
-        public IEnumerable<KwejkModel> GetKwejkObjects(int id)
+        public IEnumerable<KwejkModel> GetObjects(int id)
         {
-            var nodes = KwejkRepository.GetPageNodes(id);
+            var nodes = KwejkParser.GetPageNodes(id);
 
             return GetParsedKwejkObjects(nodes);
         }
@@ -46,7 +46,7 @@ namespace KwejkParser.Infrastructure
 
         public int GetFirstPageNumber()
         {
-            var nodes = KwejkRepository.GetNodeWithFirstPageNumber();
+            var nodes = KwejkParser.GetNodeWithFirstPageNumber();
             var resultNumberAsText = nodes.Where(x => x.Attributes["class"]?.Value == "current").FirstOrDefault()?.InnerText.Trim();
 
             int resultNumber;
