@@ -2,57 +2,43 @@
 using System.Linq;
 using HtmlAgilityPack;
 using HtmlParser.Interfaces;
-using Models;
 
 namespace KwejkParser.Infrastructure
 {
-    public class KwejkRepository : IRepository
+    public class HtmlKwejkParser : IHtmlParser
     {
-        public IHtmlParser KwejkParser { get; set; }
-
-        public KwejkRepository(IHtmlParser kwejkRepo)
+        private const string url = "https://kwejk.pl/";
+        public IEnumerable<HtmlNode> GetNodeWithFirstPageNumber()
         {
-            KwejkParser = kwejkRepo;
-        }
-        public IEnumerable<KwejkModel> GetObjects()
-        {
-            IEnumerable<HtmlNode> nodes = KwejkParser.GetPageNodes();
-
-            return GetParsedKwejkObjects(nodes);
+            var doc = PrepareHtmlDocument(url);
+            return doc.DocumentNode.SelectNodes("//li");
         }
 
-        public IEnumerable<KwejkModel> GetObjects(int id)
+        public IEnumerable<HtmlNode> GetPageNodes()
         {
-            var nodes = KwejkParser.GetPageNodes(id);
 
-            return GetParsedKwejkObjects(nodes);
+            var doc = PrepareHtmlDocument(url);
+
+            var nodes = doc.DocumentNode.SelectNodes("//div").Where(x => x.Attributes["class"]?.Value.Contains("box fav") ?? false);
+
+            return nodes;
         }
 
-        private IEnumerable<KwejkModel> GetParsedKwejkObjects(IEnumerable<HtmlNode> nodes)
+        public IEnumerable<HtmlNode> GetPageNodes(int id)
         {
-            foreach (var node in nodes)
-            {
+            var doc = PrepareHtmlDocument(string.Concat(url, "/strona/", id));
 
-                var title = node.Descendants("h2").
-                        Select(x => x.Descendants("a").Where(y => y.Attributes["dusk"]?.Value == "media-title-selector").
-                        FirstOrDefault()?.InnerText).FirstOrDefault();
+            var nodes = doc.DocumentNode.SelectNodes("//div").Where(x => x.Attributes["class"]?.Value.Contains("box fav") ?? false);
 
-                var imageUrl = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "full-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
-                var videoUrl = node.Descendants("player").Where(x => x.Attributes["class"]?.Value.Contains("player") == true).Select(y => y.Attributes["source"]?.Value).FirstOrDefault();
-
-                yield return new KwejkModel() { ImageUrl = imageUrl?.Trim(), VideoUrl = videoUrl, Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
-            }
+            return nodes;
         }
 
-        public int GetFirstPageNumber()
+        private HtmlDocument PrepareHtmlDocument(string url)
         {
-            var nodes = KwejkParser.GetNodeWithFirstPageNumber();
-            var resultNumberAsText = nodes.Where(x => x.Attributes["class"]?.Value == "current").FirstOrDefault()?.InnerText.Trim();
-
-            int resultNumber;
-            int.TryParse(resultNumberAsText, out resultNumber);
-            return resultNumber;
+            var web = new HtmlWeb();
+            return web.Load(url);
         }
+
 
     }
 }
