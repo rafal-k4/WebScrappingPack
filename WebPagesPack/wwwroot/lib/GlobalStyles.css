@@ -3,13 +3,18 @@
     color: white;
 }
 
-.bottom-top-padding{
-    padding:10px 0 50px 0;
+.bottom-top-padding {
+    padding: 10px 0 50px 0;
 }
 
-img.shrinkedImage{
+img.shrinkedImage {
     transform: scale(0.4);
 }
 
+.enlargingOnHover {
+    transition: ease-in-out 0.5s;
+}
 
-
+    .enlargingOnHover:hover {
+        transform: scale(1.2);
+    }
