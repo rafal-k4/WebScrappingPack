@@ -4,7 +4,7 @@ using HtmlAgilityPack;
 using HtmlParser.Interfaces;
 using Models;
 
-namespace KwejkParser.Infrastructure
+namespace HtmlParser.Infrastructure
 {
     public class KwejkRepository : IRepository
     {

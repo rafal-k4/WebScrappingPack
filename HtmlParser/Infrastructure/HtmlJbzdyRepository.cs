@@ -4,7 +4,7 @@ using HtmlAgilityPack;
 using HtmlParser.Interfaces;
 using Models;
 
-namespace JbzdzParser.Infrastructure
+namespace HtmlParser.Infrastructure
 {
     public class HtmlJbzdyRepository: IRepository
     {

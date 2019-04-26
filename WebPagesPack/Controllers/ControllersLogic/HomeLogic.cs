@@ -7,7 +7,7 @@ namespace WebPagesPack.Controllers.ControllersLogic
     public class HomeLogic : IHomeLogic
     {
         private IRepository KwejkRepo { get; set; }
-        public HomeLogic(IRepository kwejkRepo)
+        public HomeLogic(IRepository kwejkRepo, IRepository jbzdyRepo)
         {
             KwejkRepo = kwejkRepo;
         }

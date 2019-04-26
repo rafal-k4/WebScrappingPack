@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using WebPagesPack.Controllers.ControllersLogic;
+using HtmlParser.Interfaces;
+using WebPagesPack.Controllers;
+using HtmlParser.Infrastructure;
 
 
 namespace WebPagesPack
@@ -15,8 +18,13 @@ namespace WebPagesPack
             services.AddMvc();
 
             services.AddScoped<IHomeLogic, HomeLogic>();
-            //services.AddScoped<IHtmlKwejkParser, HtmlKwejkParser>();
-            //services.AddScoped<IHtmlKwejkRepository, HtmlKwejkRepository>();
+            //services.AddScoped<IHtmlParser, Htm>();
+            //services.AddScoped<IRepository, HtmlJbzdyRepository>();
+            //services.AddScoped<KwejkController>(p=>new())
+            //services.AddTransient(ctx =>
+            //new HomeController(new TestService("Non-default value")));
+            services.AddTransient(ctx =>
+            new KwejkController());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

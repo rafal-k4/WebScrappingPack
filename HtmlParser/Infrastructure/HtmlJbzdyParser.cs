@@ -3,7 +3,7 @@ using HtmlParser.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace JbzdzParser.Infrastructure
+namespace HtmlParser.Infrastructure
 {
     public class HtmlJbzdyParser: IHtmlParser
     {

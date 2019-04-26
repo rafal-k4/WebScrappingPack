@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebPagesPack.Controllers.ControllersLogic;
+using HtmlParser.Interfaces;
+using System.Linq;
+using WebPagesPack.Models;
 
 namespace WebPagesPack.Controllers
 {
@@ -7,26 +10,27 @@ namespace WebPagesPack.Controllers
     {
 
         public int FirstPageNumber { get; set; }
-        private IHomeLogic homeLogic;
+        private IRepository kwejkRepo;
 
-        public KwejkController(IHomeLogic homeLogic)
+        public KwejkController(IRepository kwejkRepo)
         {
-            this.homeLogic = homeLogic;
-            FirstPageNumber = homeLogic.GetFirstPageNumber();
+            this.kwejkRepo = kwejkRepo;
+            FirstPageNumber = kwejkRepo.GetFirstPageNumber();
         }
 
         public ViewResult Index(int? id)
         {
 
-            var model = id == null ? homeLogic.GetKwejkViewModel() : homeLogic.GetKwejkViewModel((int)id);
-            model.CurrentPageNumber = id == null ? FirstPageNumber : (int)id;
+            var model = id == null ? kwejkRepo.GetObjects().ToList() : kwejkRepo.GetObjects((int)id).ToList();
+            var viewModel = new IndexViewModel { KwejkViewModel = model, CurrentPageNumber = FirstPageNumber }
+            //model.CurrentPageNumber = id == null ? FirstPageNumber : (int)id;
 
             return View(model);
         }
 
         public ActionResult GetPage(int id)
         {
-            var model = homeLogic.GetKwejkViewModel(id);
+            var model = kwejkRepo.GetObjects(id);
 
             return PartialView("Index", model);
         }

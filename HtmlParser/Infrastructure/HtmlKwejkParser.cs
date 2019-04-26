@@ -3,7 +3,7 @@ using System.Linq;
 using HtmlAgilityPack;
 using HtmlParser.Interfaces;
 
-namespace KwejkParser.Infrastructure
+namespace HtmlParser.Infrastructure
 {
     public class HtmlKwejkParser : IHtmlParser
     {
