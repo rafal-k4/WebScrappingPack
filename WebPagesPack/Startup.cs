@@ -36,10 +36,15 @@ namespace WebPagesPack
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}");
+                    template: "{controller=Home}", defaults: new { action = "Index" });
                 routes.MapRoute(
                     name: "kwejk",
-                    template: "{controller=Kwejk}/{action=Index}/{id?}");
+                    template: "{controller=Kwejk}/{id?}", defaults: new { action = "Index" });
+                routes.MapRoute(
+                    name: "jbzdy",
+                    template: "{controller=Jbzdy}/{id?}", defaults: new { action = "Index" });
+
+                
             });
         }
     }
