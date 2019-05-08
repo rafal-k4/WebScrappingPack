@@ -15,7 +15,7 @@ namespace WebPagesPack
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc().AddControllersAsServices();
 
             services.AddScoped<IHomeLogic, HomeLogic>();
             //services.AddScoped<IHtmlParser, Htm>();
@@ -24,7 +24,9 @@ namespace WebPagesPack
             //services.AddTransient(ctx =>
             //new HomeController(new TestService("Non-default value")));
             services.AddTransient(ctx =>
-            new KwejkController());
+            new KwejkController(new HtmlKwejkRepository(new HtmlKwejkParser())));
+            services.AddTransient(ctx =>
+            new JbzdyController(new HtmlJbzdyRepository(new HtmlJbzdyParser())));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,27 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebPagesPack.Controllers.ControllersLogic;
+﻿
+
 using HtmlParser.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using WebPagesPack.Models;
 
 namespace WebPagesPack.Controllers
 {
-    public class KwejkController: Controller
+    public class JbzdyController: Controller
     {
-
         public int FirstPageNumber { get; set; }
-        private IRepository kwejkRepo;
+        private IRepository jzbdyRepo;
 
-        public KwejkController(IRepository kwejkRepo)
+        public JbzdyController(IRepository repo)
         {
-            this.kwejkRepo = kwejkRepo;
-            FirstPageNumber = kwejkRepo.GetFirstPageNumber();
+            jzbdyRepo = repo;
         }
 
         public ViewResult Index(int? id)
         {
 
-            var model = id == null ? kwejkRepo.GetObjects().ToList() : kwejkRepo.GetObjects((int)id).ToList();
+            var model = id == null ? jzbdyRepo.GetObjects().ToList() : jzbdyRepo.GetObjects((int)id).ToList();
             var viewModel = new IndexViewModel { KwejkViewModel = model, CurrentPageNumber = FirstPageNumber };
             //model.CurrentPageNumber = id == null ? FirstPageNumber : (int)id;
 
@@ -30,7 +29,7 @@ namespace WebPagesPack.Controllers
 
         public ActionResult GetPage(int id)
         {
-            var model = kwejkRepo.GetObjects(id);
+            var model = jzbdyRepo.GetObjects(id);
             var viewModel = new IndexViewModel { KwejkViewModel = model, CurrentPageNumber = id };
 
             return PartialView("Index", viewModel);

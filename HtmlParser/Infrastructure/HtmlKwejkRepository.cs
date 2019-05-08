@@ -6,11 +6,11 @@ using Models;
 
 namespace HtmlParser.Infrastructure
 {
-    public class KwejkRepository : IRepository
+    public class HtmlKwejkRepository : IRepository
     {
         public IHtmlParser KwejkParser { get; set; }
 
-        public KwejkRepository(IHtmlParser kwejkRepo)
+        public HtmlKwejkRepository(IHtmlParser kwejkRepo)
         {
             KwejkParser = kwejkRepo;
         }
