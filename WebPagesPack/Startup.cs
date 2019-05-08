@@ -18,11 +18,8 @@ namespace WebPagesPack
             services.AddMvc().AddControllersAsServices();
 
             services.AddScoped<IHomeLogic, HomeLogic>();
-            //services.AddScoped<IHtmlParser, Htm>();
-            //services.AddScoped<IRepository, HtmlJbzdyRepository>();
-            //services.AddScoped<KwejkController>(p=>new())
-            //services.AddTransient(ctx =>
-            //new HomeController(new TestService("Non-default value")));
+
+
             services.AddTransient(ctx =>
             new KwejkController(new HtmlKwejkRepository(new HtmlKwejkParser())));
             services.AddTransient(ctx =>
