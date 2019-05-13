@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class JbzdyModel
+    public class JbzdyModel: IModel
     {
         public string ImageUrl { get; set; }
         public string Title { get; set; }

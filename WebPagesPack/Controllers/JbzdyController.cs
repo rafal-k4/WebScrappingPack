@@ -21,7 +21,7 @@ namespace WebPagesPack.Controllers
         {
 
             var model = id == null ? jzbdyRepo.GetObjects().ToList() : jzbdyRepo.GetObjects((int)id).ToList();
-            var viewModel = new IndexViewModel { KwejkViewModel = model, CurrentPageNumber = FirstPageNumber };
+            var viewModel = new IndexViewModel { MemesObject = model, CurrentPageNumber = FirstPageNumber };
             //model.CurrentPageNumber = id == null ? FirstPageNumber : (int)id;
 
             return View(viewModel);
@@ -30,7 +30,7 @@ namespace WebPagesPack.Controllers
         public ActionResult GetPage(int id)
         {
             var model = jzbdyRepo.GetObjects(id);
-            var viewModel = new IndexViewModel { KwejkViewModel = model, CurrentPageNumber = id };
+            var viewModel = new IndexViewModel { MemesObject = model, CurrentPageNumber = id };
 
             return PartialView("Index", viewModel);
         }

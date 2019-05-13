@@ -10,6 +10,8 @@ namespace WebPagesPack.Models
 
         public IEnumerable<JbzdyModel> JbzdyViewModel { get; set; }
 
+        public IEnumerable<IModel> MemesObject { get; set; }
+
         public int CurrentPageNumber { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class KwejkModel
+    public class KwejkModel: IModel
     {
         public string Title { get; set; }
         public string ImageUrl { get; set; }

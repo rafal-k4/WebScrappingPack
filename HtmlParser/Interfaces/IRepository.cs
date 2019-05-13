@@ -6,7 +6,7 @@ namespace HtmlParser.Interfaces
     public interface IRepository
     {
         int GetFirstPageNumber();
-        IEnumerable<KwejkModel> GetObjects();
-        IEnumerable<KwejkModel> GetObjects(int id);
+        IEnumerable<IModel> GetObjects();
+        IEnumerable<IModel> GetObjects(int id);
     }
 }

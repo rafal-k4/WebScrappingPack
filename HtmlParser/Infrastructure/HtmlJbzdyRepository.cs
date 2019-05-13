@@ -14,14 +14,14 @@ namespace HtmlParser.Infrastructure
         {
             JbzdyParser = jbzdyRepo;
         }
-        public IEnumerable<KwejkModel> GetObjects()
+        public IEnumerable<IModel> GetObjects()
         {
             IEnumerable<HtmlNode> nodes = JbzdyParser.GetPageNodes();
 
             return GetJbzdyObject(nodes);
         }
 
-        public IEnumerable<KwejkModel> GetObjects(int id)
+        public IEnumerable<IModel> GetObjects(int id)
         {
             var nodes = JbzdyParser.GetPageNodes(id);
 
