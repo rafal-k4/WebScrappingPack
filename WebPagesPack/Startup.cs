@@ -38,10 +38,16 @@ namespace WebPagesPack
                     name: "kwejk",
                     template: "{controller=Kwejk}/{id?}", defaults: new { action = "Index" });
                 routes.MapRoute(
+                    null,
+                    template: "{controller=Kwejk}/{action=Index}/{id?}");
+                routes.MapRoute(
                     name: "jbzdy",
                     template: "{controller=Jbzdy}/{id?}", defaults: new { action = "Index" });
+                routes.MapRoute(
+                    null,
+                    template: "{controller=Jbzdy}/{action=Index}/{id?}");
 
-                
+
             });
         }
     }

@@ -19,16 +19,16 @@ namespace HtmlParser.Infrastructure
 
             var doc = PrepareHtmlDocument(url);
 
-            var nodes = doc.DocumentNode.SelectNodes("//div").Where(x => x.Attributes["class"]?.Value.Contains("box fav") ?? false);
+            var nodes = doc.DocumentNode.SelectNodes("//article").Where(x => x.Attributes["class"]?.Value.Contains("resource-object") ?? false);
 
             return nodes;
         }
 
         public IEnumerable<HtmlNode> GetPageNodes(int id)
         {
-            var doc = PrepareHtmlDocument(string.Concat(url, "/strona/", id));
+            var doc = PrepareHtmlDocument(string.Concat(url, "/st/", id));
 
-            var nodes = doc.DocumentNode.SelectNodes("//div").Where(x => x.Attributes["class"]?.Value.Contains("box fav") ?? false);
+            var nodes = doc.DocumentNode.SelectNodes("//article").Where(x => x.Attributes["class"]?.Value.Contains("resource-object") ?? false);
 
             return nodes;
         }

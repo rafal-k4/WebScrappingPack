@@ -33,12 +33,16 @@ namespace HtmlParser.Infrastructure
             foreach (var node in nodes)
             {
 
-                var title = node.Descendants("h2").
-                        Select(x => x.Descendants("a").Where(y => y.Attributes["dusk"]?.Value == "media-title-selector").
-                        FirstOrDefault()?.InnerText).FirstOrDefault();
+                //var title = node.Descendants("h2").
+                //        Select(x => x.Descendants("a").Where(y => y.Attributes["dusk"]?.Value == "media-title-selector").
+                //        FirstOrDefault()?.InnerText).FirstOrDefault();
 
-                var imageUrl = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "full-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
-                var videoUrl = node.Descendants("player").Where(x => x.Attributes["class"]?.Value.Contains("player") == true).Select(y => y.Attributes["source"]?.Value).FirstOrDefault();
+                var title = node.Descendants("div").Where(x => x.Attributes["class"]?.Value.Contains("title") == true).Select(x => x.InnerText).FirstOrDefault();
+
+
+
+                var imageUrl = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "resource-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
+                var videoUrl = node.Descendants("video").Where(x => x.Attributes["class"]?.Value.Contains("vjs-tech") == true).Select(y => y.Attributes["source"]?.Value).FirstOrDefault();
 
                 yield return new JbzdyModel() { ImageUrl = imageUrl?.Trim(), VideoUrl = videoUrl, Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
             }
