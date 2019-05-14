@@ -1,7 +1,35 @@
-﻿
+﻿@model JbzdyViewModel
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-<h2>Jbzdy Działa!</h2>
+    <div class="col-12 text-center">
+        @foreach (var item in Model.JbzdyList)
+        {
+            if (item.ImageUrl != null)
+            {
+                <div class="bottom-top-padding">
+                    <h3 class="text-white">@item.Title</h3>
+                    <img src="@item.ImageUrl" class="border border-larger img-fluid" />
+                </div>
+            }
+            else if (item.VideoUrl != null)
+            {
+                <div class="bottom-top-padding">
+                    <h3 class="text-white">@item.Title</h3>
+                    <video class="text-center border border-larger img-fluid" width="612" controls>
+                        <source src="@item.VideoUrl" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            }
+            else
+            {
+                <div class="bottom-top-padding">
+                    <h3 class="text-white">Coś tu nie zadziałało</h3>
+                    <div class="border border-larger">  </div>
+                </div>
+            }
+
+        }
+    </div>

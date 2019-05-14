@@ -39,10 +39,9 @@ namespace HtmlParser.Infrastructure
 
                 var title = node.Descendants("div").Where(x => x.Attributes["class"]?.Value.Contains("title") == true).Select(x => x.InnerText).FirstOrDefault();
 
-
-
                 var imageUrl = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "resource-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
-                var videoUrl = node.Descendants("video").Where(x => x.Attributes["class"]?.Value.Contains("vjs-tech") == true).Select(y => y.Attributes["source"]?.Value).FirstOrDefault();
+                var videoUrl = node.Descendants("video").FirstOrDefault()?.Descendants("source").Select(x => x.Attributes["src"]).FirstOrDefault().Value;
+
 
                 yield return new JbzdyModel() { ImageUrl = imageUrl?.Trim(), VideoUrl = videoUrl, Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
             }
