@@ -5,7 +5,7 @@ namespace WebPagesPack.Controllers
     public class HomeController:Controller
     {
 
-        public ViewResult Index(int? id)
+        public ViewResult Index()
         {
             return View();
         }

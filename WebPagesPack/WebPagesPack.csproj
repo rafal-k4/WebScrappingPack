@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\ControllersLogic\" />
     <Folder Include="wwwroot\Images\" />
   </ItemGroup>
 

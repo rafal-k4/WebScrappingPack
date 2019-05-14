@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace HtmlParser.Infrastructure
 {
-    public class HtmlJbzdyParser: IHtmlParser
+    public class HtmlJbzdyParser: IJbzdyHtmlParser
     {
         private const string url = "https://jbzdy.pl/";
         public IEnumerable<HtmlNode> GetNodeWithFirstPageNumber()

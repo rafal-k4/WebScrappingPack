@@ -1,11 +1,11 @@
-﻿@model IndexViewModel
+﻿@model KwejkViewModel
 
 @{
     ViewData["Title"] = "Memsy";
 }
 
 <div class="col-12 text-center">
-    @foreach (var item in Model.KwejkViewModel)
+    @foreach (var item in Model.KwejkList)
     {
         if (item.ImageUrl != null)
         {

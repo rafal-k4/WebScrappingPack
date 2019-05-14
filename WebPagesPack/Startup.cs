@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using WebPagesPack.Controllers.ControllersLogic;
 using HtmlParser.Interfaces;
-using WebPagesPack.Controllers;
 using HtmlParser.Infrastructure;
 
 
@@ -15,15 +13,14 @@ namespace WebPagesPack
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().AddControllersAsServices();
+            services.AddMvc();
 
-            services.AddScoped<IHomeLogic, HomeLogic>();
+            services.AddTransient<IKwejkHtmlParser, HtmlKwejkParser>();
+            services.AddTransient<IKwejkRepository, KwejkRepository>();
 
+            services.AddTransient<IJbzdyHtmlParser, HtmlJbzdyParser>();
+            services.AddTransient<IJbzdyRepository, JbzdyRepository>();
 
-            services.AddTransient(ctx =>
-            new KwejkController(new HtmlKwejkRepository(new HtmlKwejkParser())));
-            services.AddTransient(ctx =>
-            new JbzdyController(new HtmlJbzdyRepository(new HtmlJbzdyParser())));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

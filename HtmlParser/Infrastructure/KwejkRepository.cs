@@ -6,22 +6,22 @@ using Models;
 
 namespace HtmlParser.Infrastructure
 {
-    public class HtmlKwejkRepository : IRepository
+    public class KwejkRepository : IKwejkRepository
     {
-        public IHtmlParser KwejkParser { get; set; }
+        public IKwejkHtmlParser KwejkParser { get; set; }
 
-        public HtmlKwejkRepository(IHtmlParser kwejkRepo)
+        public KwejkRepository(IKwejkHtmlParser kwejkRepo)
         {
             KwejkParser = kwejkRepo;
         }
-        public IEnumerable<IModel> GetObjects()
+        public IEnumerable<KwejkModel> GetObjects()
         {
             IEnumerable<HtmlNode> nodes = KwejkParser.GetPageNodes();
 
             return GetParsedKwejkObjects(nodes);
         }
 
-        public IEnumerable<IModel> GetObjects(int id)
+        public IEnumerable<KwejkModel> GetObjects(int id)
         {
             var nodes = KwejkParser.GetPageNodes(id);
 

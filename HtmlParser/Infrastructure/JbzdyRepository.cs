@@ -6,29 +6,29 @@ using Models;
 
 namespace HtmlParser.Infrastructure
 {
-    public class HtmlJbzdyRepository: IRepository
+    public class JbzdyRepository: IJbzdyRepository
     {
-        public IHtmlParser JbzdyParser { get; set; }
+        public IJbzdyHtmlParser JbzdyParser { get; set; }
 
-        public HtmlJbzdyRepository(IHtmlParser jbzdyRepo)
+        public JbzdyRepository(IJbzdyHtmlParser jbzdyRepo)
         {
             JbzdyParser = jbzdyRepo;
         }
-        public IEnumerable<IModel> GetObjects()
+        public IEnumerable<JbzdyModel> GetObjects()
         {
             IEnumerable<HtmlNode> nodes = JbzdyParser.GetPageNodes();
 
             return GetJbzdyObject(nodes);
         }
 
-        public IEnumerable<IModel> GetObjects(int id)
+        public IEnumerable<JbzdyModel> GetObjects(int id)
         {
             var nodes = JbzdyParser.GetPageNodes(id);
 
             return GetJbzdyObject(nodes);
         }
 
-        private IEnumerable<KwejkModel> GetJbzdyObject(IEnumerable<HtmlNode> nodes)
+        private IEnumerable<JbzdyModel> GetJbzdyObject(IEnumerable<HtmlNode> nodes)
         {
             foreach (var node in nodes)
             {
@@ -40,7 +40,7 @@ namespace HtmlParser.Infrastructure
                 var imageUrl = node.Descendants("img").Where(x => x.Attributes["class"]?.Value == "full-image").Select(y => y.Attributes["src"]?.Value).FirstOrDefault();
                 var videoUrl = node.Descendants("player").Where(x => x.Attributes["class"]?.Value.Contains("player") == true).Select(y => y.Attributes["source"]?.Value).FirstOrDefault();
 
-                yield return new KwejkModel() { ImageUrl = imageUrl?.Trim(), VideoUrl = videoUrl, Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
+                yield return new JbzdyModel() { ImageUrl = imageUrl?.Trim(), VideoUrl = videoUrl, Title = title?.Trim().Replace("\t", "").Replace("\n", " ") };
             }
         }
 

@@ -5,7 +5,7 @@ using HtmlParser.Interfaces;
 
 namespace HtmlParser.Infrastructure
 {
-    public class HtmlKwejkParser : IHtmlParser
+    public class HtmlKwejkParser : IKwejkHtmlParser
     {
         private const string url = "https://kwejk.pl/";
         public IEnumerable<HtmlNode> GetNodeWithFirstPageNumber()
